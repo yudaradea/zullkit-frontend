@@ -1,3 +1,7 @@
+<script setup>
+import { RouterLink } from "vue-router";
+</script>
+
 <template>
   <div class="p-8 border rounded-3xl">
     <h1 class="text-5xl font-semibold">IDR 9,000 <span class="text-xl font-light text-gray-500">/month</span></h1>
@@ -41,11 +45,11 @@
         Unlock cloning app
       </li>
     </ul>
-    <a
-      href="checkout.html"
+    <RouterLink
+      to="/success"
       class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
     >
       Checkout Now
-    </a>
+    </RouterLink>
   </div>
 </template>
