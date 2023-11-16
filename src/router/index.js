@@ -20,11 +20,30 @@ const router = createRouter({
       component: () => import("../views/RegisterView.vue"),
     },
     {
-      path: "/product",
+      path: "/product/:id",
       name: "product",
       component: () => import("../views/DetailView.vue"),
     },
+    {
+      path: "/pricing",
+      name: "pricing",
+      component: () => import("../views/PricingView.vue"),
+    },
+    {
+      path: "/success",
+      name: "success",
+      component: () => import("../views/SuccessView.vue"),
+    },
   ],
+
+  // Returning the savedPosition will result in a native-like behavior when navigating with back/forward buttons
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 export default router;
