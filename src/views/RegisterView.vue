@@ -15,7 +15,7 @@ import RegisterText from "../components/auth/RegisterText.vue";
         </div>
         <div class="w-full p-5 mx-auto md:max-w-4xl">
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div class="mx-auto md:mx-0">
+            <div class="mx-auto md:mx-0 hidden md:inline">
               <RegisterText />
             </div>
             <div>
