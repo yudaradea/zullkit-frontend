@@ -1,3 +1,4 @@
+<script setup></script>
 <template>
   <div class="mb-12">
     <div class="block mb-2">
