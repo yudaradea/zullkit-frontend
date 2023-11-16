@@ -1,11 +1,18 @@
 <script setup>
+import { useRouter, useRoute, RouterLink } from "vue-router";
+
 import Logo from "./Logo.vue";
 import NavigationLink from "./NavigationLink.vue";
 import UserInfo from "./UserInfo.vue";
 import AuthButton from "./AuthButton.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const isLogin = ref(false);
+const location = useRoute();
+
+const isLoginPage = computed(() => {
+  return location.path === "/login" || location.path === "/register";
+});
 </script>
 
 <template>
@@ -13,7 +20,7 @@ const isLogin = ref(false);
     <div class="container flex flex-wrap items-center justify-between mx-auto my-2">
       <Logo />
       <UserInfo v-if="isLogin" />
-      <AuthButton v-else />
+      <AuthButton v-else="isLogin" v-if="!isLoginPage" />
       <NavigationLink />
     </div>
   </nav>
