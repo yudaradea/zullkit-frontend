@@ -13,7 +13,7 @@ const location = useRoute();
 async function getProductData() {
   try {
     const productData = await axios.get(
-      `http://zullkit-backend.maleskerja.my.id/api/categories?id=${location.params.id}&show_product=1`
+      `https://zullkit-backend.maleskerja.my.id/api/categories?id=${location.params.id}&show_product=1`
     );
 
     items.value = productData.data.data.products;

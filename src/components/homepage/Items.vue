@@ -7,7 +7,7 @@ const items = ref([]);
 
 async function getProductData() {
   try {
-    const productData = await axios.get("http://zullkit-backend.maleskerja.my.id/api/products");
+    const productData = await axios.get("https://zullkit-backend.maleskerja.my.id/api/products");
     items.value = productData.data.data.data;
   } catch (error) {
     console.error(error);
