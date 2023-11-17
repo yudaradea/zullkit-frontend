@@ -19,7 +19,7 @@ import { RouterLink } from "vue-router";
 
     <RouterLink
       to="/login"
-      class="px-8 py-3 text-base font-medium text-white border border-transparent rounded-full bg-navy hover:bg-navy md:py-2 md:text-sm md:px-8 hover:shadow md:hidden"
+      class="px-8 py-2 text-base font-medium text-white border border-transparent rounded-full bg-navy hover:bg-navy md:py-2 md:text-sm md:px-8 hover:shadow md:hidden"
     >
       Sign In
     </RouterLink>
