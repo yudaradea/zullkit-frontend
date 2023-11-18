@@ -8,7 +8,7 @@ const defaultImage = ref();
 const galleries = ref([]);
 
 function changeImage(image) {
-  this.defaultImage = image;
+  defaultImage.value = image;
 }
 
 async function getProductImages() {
@@ -19,8 +19,6 @@ async function getProductImages() {
     // productDetail.value = getProductDetail.data.data;
     defaultImage.value = getProductImage.data.data.galleries[0].url;
     galleries.value = getProductImage.data.data.galleries;
-
-    console.log(getProductImage.data.data.galleries);
   } catch (error) {
     console.log(error);
   }
