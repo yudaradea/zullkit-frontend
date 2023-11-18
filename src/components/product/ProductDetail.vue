@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import Gallery from "./Gallery.vue";
@@ -19,9 +19,14 @@ async function getProduct() {
   }
 }
 
-onMounted(() => {
-  getProduct();
+const product = await getProduct();
+
+const features = computed(() => {
+  return productDetail.value.features.split(",");
 });
+// onMounted(() => {
+//   getProduct();
+// });
 </script>
 
 <template>
@@ -32,9 +37,13 @@ onMounted(() => {
           {{ productDetail.name }}
         </h1>
         <p class="text-gray-500">{{ productDetail.subtitle }}</p>
-        <!-- galler -->
-        <Gallery />
-        <!-- End Galler -->
+
+        <!-- gallery -->
+
+        <Gallery :galleries="productDetail.galleries" />
+
+        <!-- End Gallery -->
+
         <section class="" id="orders">
           <h1 class="mt-8 mb-3 text-lg font-semibold">About</h1>
           <div class="text-gray-500">
@@ -43,7 +52,7 @@ onMounted(() => {
         </section>
       </main>
       <!-- Download Button -->
-      <DownloadButton />
+      <DownloadButton :features="productDetail" :featuresList="features" />
       <!-- End Download button -->
     </div>
   </div>

@@ -4,6 +4,8 @@ import ProductDetail from "../components/product/ProductDetail.vue";
 
 <template>
   <main>
-    <ProductDetail />
+    <Suspense>
+      <ProductDetail />
+    </Suspense>
   </main>
 </template>

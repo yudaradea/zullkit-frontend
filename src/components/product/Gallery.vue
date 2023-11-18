@@ -1,36 +1,18 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import axios from "axios";
+import { ref } from "vue";
+const props = defineProps({
+  galleries: Array,
+});
 
-const location = useRoute();
-const defaultImage = ref();
-const galleries = ref([]);
+const defaultImage = ref(props.galleries[0].url);
 
 function changeImage(image) {
   defaultImage.value = image;
 }
-
-async function getProductImages() {
-  try {
-    const getProductImage = await axios.get(
-      `https://zullkit-backend.maleskerja.my.id/api/products?id=${location.params.id}`
-    );
-    // productDetail.value = getProductDetail.data.data;
-    defaultImage.value = getProductImage.data.data.galleries[0].url;
-    galleries.value = getProductImage.data.data.galleries;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-onMounted(() => {
-  getProductImages();
-});
 </script>
 
 <template>
-  <section id="gallery">
+  <section id="gallery" v-if="galleries">
     <img :src="defaultImage" alt="" class="w-full mt-6 rounded-2xl" />
 
     <div class="grid grid-cols-4 gap-4 mt-4">
