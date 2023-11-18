@@ -4,6 +4,9 @@ import Items from "../components/categories/Items.vue";
 
 <template>
   <main>
-    <Items />
+    <Suspense>
+      <Items />
+      <template #fallback></template>
+    </Suspense>
   </main>
 </template>

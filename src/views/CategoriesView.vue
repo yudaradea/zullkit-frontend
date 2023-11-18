@@ -4,6 +4,9 @@ import Categories from "../components/categories/Categories.vue";
 
 <template>
   <main>
-    <Categories />
+    <Suspense>
+      <Categories />
+      <template #fallback> </template>
+    </Suspense>
   </main>
 </template>

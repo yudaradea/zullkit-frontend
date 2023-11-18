@@ -3,7 +3,6 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import ItemsCard from "../ItemsCard.vue";
-
 const items = ref([]);
 
 const cateogryName = ref();
@@ -18,16 +17,17 @@ async function getProductData() {
 
     items.value = productData.data.data.products;
     cateogryName.value = productData.data.data.name;
-
-    console.log(items.value.length);
+    // await new Promise((res) => setTimeout(res, 500));
   } catch (error) {
     console.error(error);
   }
 }
 
-onMounted(() => {
-  getProductData();
-});
+const productData = await getProductData();
+
+// onMounted(() => {
+//   getProductData();
+// });
 </script>
 
 <template>
@@ -35,6 +35,7 @@ onMounted(() => {
     <h2 class="mb-4 text-xl font-medium md:mb-0 md:text-lg">Product of category {{ cateogryName }}</h2>
     <div class="flex flex-wrap -mx-1 lg:-mx-4">
       <h1 v-if="items.length == 0" class="mt-4 text-red-400 md:ml-4">Items not found on this category...</h1>
+
       <ItemsCard
         v-for="item in items"
         :key="item.id"

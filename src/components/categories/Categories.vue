@@ -10,14 +10,18 @@ async function getCategoriesData() {
     const response = await axios.get("https://zullkit-backend.maleskerja.my.id/api/categories?show_product=1");
 
     categories.value = response.data.data.data;
+    // await new Promise((res) => setTimeout(res, 500));
   } catch (error) {
     console.error(error);
   }
 }
 
-onMounted(() => {
-  getCategoriesData();
-});
+const response = await getCategoriesData();
+// console.log(categoriesData);
+
+// onMounted(() => {
+//   getCategoriesData();
+// });
 </script>
 
 <template>
