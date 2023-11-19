@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeMount } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../../stores/user";
 
@@ -19,8 +19,17 @@ const props = defineProps({
 
 const show = ref(false);
 
-function toggleDropdown(e) {
+function toggleDropdown() {
   show.value = !show.value;
+  show.value &&
+    nextTick(() => {
+      document.addEventListener("click", hide);
+    });
+}
+
+function hide() {
+  show.value = false;
+  document.removeEventListener("click", hide);
 }
 </script>
 
@@ -34,7 +43,7 @@ function toggleDropdown(e) {
         id="user-menu-button"
         aria-expanded="false"
         data-dropdown-toggle="dropdown"
-        @click.prevent="toggleDropdown"
+        @click.stop="toggleDropdown"
       >
         <span class="sr-only">Open user menu</span>
         <img class="w-8 h-8 rounded-full" :src="userInfo.profile_photo_url" alt="user photo" />
@@ -44,7 +53,8 @@ function toggleDropdown(e) {
     <div
       class="z-50 fixed right-6 md:right-20 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
       id="dropdown"
-      :class="{ hidden: !show }"
+      v-show="show"
+      @click.stop
     >
       <div class="px-4 py-3">
         <span class="block text-sm text-gray-900 dark:text-white">{{ userInfo.name }}</span>
