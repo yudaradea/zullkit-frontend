@@ -13,7 +13,7 @@ function changeImage(image) {
 
 <template>
   <section id="gallery" v-if="galleries">
-    <img :src="defaultImage" alt="" class="w-full mt-6 rounded-2xl" />
+    <img :src="defaultImage" alt="" class="w-full object-fill h-80 md:h-96 mt-6 rounded-2xl" />
 
     <div class="grid grid-cols-4 gap-4 mt-4">
       <template v-for="gallery in galleries" :key="gallery.id">

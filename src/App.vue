@@ -6,7 +6,9 @@ const location = useRoute();
 </script>
 
 <template>
-  <Navbar v-if="location.path !== '/success'" />
+  <Suspense>
+    <Navbar v-if="location.path !== '/success'" />
+  </Suspense>
 
   <RouterView />
 </template>

@@ -1,16 +1,40 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import { useUserStore } from "../../stores/user";
 import { ref } from "vue";
+import axios from "axios";
+
+const useStore = useUserStore();
+const route = useRouter();
 
 const formRegister = ref({
   name: "",
   email: "",
   password: "",
+  title: "Member",
 });
+
+async function register() {
+  try {
+    const response = await axios.post("https://zullkit-backend.maleskerja.my.id/api/register", {
+      name: formRegister.value.name,
+      email: formRegister.value.email,
+      password: formRegister.value.password,
+      title: formRegister.value.title,
+    });
+    localStorage.setItem("access_token", response.data.data.access_token);
+    localStorage.setItem("token_type", response.data.data.token_type);
+
+    useStore.fetchUser();
+    route.push("/");
+  } catch (error) {
+    console.log(error);
+  }
+}
 </script>
 
 <template>
-  <form>
+  <form @submit.prevent="register">
     <div class="mb-4">
       <label class="block mb-1" for="name">Name</label>
       <input
@@ -46,7 +70,7 @@ const formRegister = ref({
     </div>
     <div class="mt-6">
       <button
-        type="button"
+        type="submit"
         class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-lg md:px-10 hover:shadow"
       >
         Continue Sign Up

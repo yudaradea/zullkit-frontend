@@ -41,7 +41,10 @@ function toggleDropdownMenu() {
     id="mobile-menu-2"
     :class="{ hidden: !showMenu }"
   >
-    <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-regular">
+    <ul
+      class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-regular"
+      @click="showMenu = false"
+    >
       <li>
         <RouterLink
           to="/"
