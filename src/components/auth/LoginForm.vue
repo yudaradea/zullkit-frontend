@@ -22,6 +22,8 @@ async function login() {
     localStorage.setItem("token_type", response.data.data.token_type);
 
     useStore.fetchUser();
+
+    // await new Promise((res) => setTimeout(res, 2000));
     roter.push("/");
   } catch (error) {
     console.log(error);

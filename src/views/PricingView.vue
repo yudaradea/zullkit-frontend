@@ -5,7 +5,7 @@ import Featured from "../components/pricing/Featured.vue";
 </script>
 
 <template>
-  <div class="relative overflow-hidden bg-white">
+  <div class="relative overflow-hidden bg-white mt-16">
     <div class="mx-auto">
       <div class="flex flex-col items-center w-full sm:justify-center sm:pt-0">
         <div class="w-full p-5 mx-auto mt-4 md:mt-10 md:max-w-7xl">

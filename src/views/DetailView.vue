@@ -3,7 +3,7 @@ import ProductDetail from "../components/product/ProductDetail.vue";
 </script>
 
 <template>
-  <main>
+  <main class="pt-16">
     <Suspense>
       <ProductDetail />
     </Suspense>

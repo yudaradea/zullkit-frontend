@@ -3,7 +3,7 @@ import Categories from "../components/categories/Categories.vue";
 </script>
 
 <template>
-  <main>
+  <main class="mt-16">
     <Suspense>
       <Categories />
       <template #fallback> </template>

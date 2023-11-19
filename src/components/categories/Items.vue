@@ -31,8 +31,8 @@ const productData = await getProductData();
 </script>
 
 <template>
-  <div class="container px-4 mx-auto my-16 md:px-12">
-    <h2 class="mb-4 text-xl font-medium md:mb-0 md:text-lg">Product of category {{ cateogryName }}</h2>
+  <div class="pt-16 container px-4 mx-auto my-16 md:px-12">
+    <h2 class="mb-4 text-xl font-medium md:mb-0 md:text-lg">Product of {{ cateogryName }} category</h2>
     <div class="flex flex-wrap -mx-1 lg:-mx-4">
       <h1 v-if="items.length == 0" class="mt-4 text-red-400 md:ml-4">Items not found on this category...</h1>
 

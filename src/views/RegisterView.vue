@@ -4,11 +4,11 @@ import RegisterText from "../components/auth/RegisterText.vue";
 </script>
 
 <template>
-  <div class="relative overflow-hidden bg-white">
+  <div class="relative overflow-hidden bg-white mt-16">
     <div class="mx-auto">
       <div class="flex flex-col items-center w-full min-h-screen pt-6 sm:justify-center sm:pt-0">
         <div class="w-full p-5 mx-auto md:max-w-4xl">
-          <h2 class="mb-10 text-5xl font-bold text-center">
+          <h2 class="mb-2 md:mb-10 text-5xl font-bold text-center">
             <span class="block lg:mb-2">Join & Get Our</span>
             <span class="block">Pro Benefits</span>
           </h2>

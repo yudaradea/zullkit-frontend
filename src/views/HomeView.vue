@@ -5,7 +5,7 @@ import Items from "../components/homepage/Items.vue";
 </script>
 
 <template>
-  <main>
+  <main class="mt-16">
     <Hero />
 
     <Categories />
