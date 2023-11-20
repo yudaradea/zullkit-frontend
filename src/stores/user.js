@@ -9,12 +9,14 @@ export const useUserStore = defineStore("user", () => {
 
   async function fetchUser() {
     try {
-      const { data } = await axios.get("https://zullkit-backend.maleskerja.my.id/api/user", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token_type")} ${localStorage.getItem("access_token")}`,
-        },
-      });
-      user.value = data.data;
+      if (localStorage.getItem("token_type") !== null) {
+        const { data } = await axios.get("https://zullkit-backend.maleskerja.my.id/api/user", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token_type")} ${localStorage.getItem("access_token")}`,
+          },
+        });
+        user.value = data.data;
+      }
     } catch (error) {
       user.value = false;
     }

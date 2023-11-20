@@ -26,7 +26,7 @@ async function register() {
     localStorage.setItem("token_type", response.data.data.token_type);
 
     useStore.fetchUser();
-    route.push("/");
+    window.location.href = "/";
   } catch (error) {
     console.log(error);
   }

@@ -10,7 +10,7 @@ function logout() {
   localStorage.removeItem("token_type");
 
   useStore.fetchUser();
-  route.push("/login");
+  window.location.href = "/login";
 }
 
 const props = defineProps({

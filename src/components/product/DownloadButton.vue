@@ -12,6 +12,7 @@ const route = useRoute();
 const useStore = useUserStore();
 
 const user = computed(() => useStore.user);
+const isLoggedIn = computed(() => useStore.isLoggedIn);
 
 // const userFetch = await userStore.fetchUser();
 
@@ -55,7 +56,7 @@ onMounted(() => {
             </li>
           </ul>
         </div>
-        <template v-if="user.subscription.length > 0">
+        <template v-if="isLoggedIn && user.subscription.length > 0">
           <a
             target="_blank"
             :href="features.file"
