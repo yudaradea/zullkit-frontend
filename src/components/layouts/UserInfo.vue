@@ -24,19 +24,23 @@ function toggleDropdown() {
   show.value &&
     nextTick(() => {
       document.addEventListener("click", hide);
+      setTimeout(() => {
+        document.addEventListener("scroll", hide);
+      }, 500);
     });
 }
 
 function hide() {
   show.value = false;
   document.removeEventListener("click", hide);
+  document.removeEventListener("scroll", hide);
 }
 </script>
 
 <template>
   <div class="md:order-3 order-1">
     <div class="flex items-center">
-      <div class="mr-2 text-sm font-regular">Halo, {{ userInfo.name }}</div>
+      <div class="mr-2 hidden sm:block text-sm font-regular">Halo, {{ userInfo.name }}</div>
       <button
         type="button"
         class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"

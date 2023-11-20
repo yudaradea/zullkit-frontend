@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter, useRoute, RouterLink } from "vue-router";
-import { ref, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 const location = useRoute();
 const router = useRouter();
 
@@ -8,6 +8,19 @@ const showMenu = ref(false);
 
 function toggleDropdownMenu() {
   showMenu.value = !showMenu.value;
+  showMenu.value &&
+    nextTick(() => {
+      document.addEventListener("click", hide);
+      setTimeout(() => {
+        document.addEventListener("scroll", hide);
+      }, 500);
+    });
+}
+
+function hide() {
+  showMenu.value = false;
+  document.removeEventListener("click", hide);
+  document.removeEventListener("scroll", hide);
 }
 </script>
 
@@ -18,7 +31,7 @@ function toggleDropdownMenu() {
     class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
     aria-controls="mobile-menu-2"
     aria-expanded="false"
-    @click="toggleDropdownMenu"
+    @click.stop="toggleDropdownMenu"
   >
     <span class="sr-only">Open main menu</span>
     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +56,7 @@ function toggleDropdownMenu() {
   >
     <ul
       class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-regular"
-      @click="showMenu = false"
+      @click.stop="showMenu = false"
     >
       <li>
         <RouterLink

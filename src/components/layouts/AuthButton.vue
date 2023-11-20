@@ -3,16 +3,16 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <div class="order-1 md:order-3 md:mt-2">
+  <div class="order-1 md:order-3">
     <RouterLink
       to="/login"
-      class="px-8 py-3 mt-2 mr-2 text-base font-medium text-black bg-gray-200 border border-transparent rounded-full hover:bg-gray-300 md:py-3 md:text-sm md:px-8 hover:shadow hidden md:inline"
+      class="px-8 py-2 mr-2 text-base font-medium text-black bg-gray-200 border border-transparent rounded-full hover:bg-gray-300 md:text-sm md:px-8 hover:shadow hidden md:inline"
     >
       Sign In
     </RouterLink>
     <RouterLink
       to="/register"
-      class="px-8 py-3 text-base font-medium text-white border border-transparent rounded-full bg-navy hover:bg-navy md:py-3 md:text-sm md:px-8 hover:shadow hidden md:inline"
+      class="px-8 py-2 text-base font-medium text-white border border-transparent rounded-full bg-navy hover:bg-navy md:text-sm md:px-8 hover:shadow hidden md:inline"
     >
       Sign Up
     </RouterLink>
