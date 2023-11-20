@@ -24,6 +24,7 @@ async function login() {
     useStore.fetchUser();
 
     // await new Promise((res) => setTimeout(res, 2000));
+    // roter.push("/");
     window.location.href = "/";
   } catch (error) {
     console.log(error);
