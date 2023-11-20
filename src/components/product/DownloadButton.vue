@@ -1,9 +1,22 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
+import { useUserStore } from "../../stores/user";
+import { computed, onMounted } from "vue";
 
 defineProps({
   features: Object,
   featuresList: Array,
+});
+
+const route = useRoute();
+const useStore = useUserStore();
+
+const user = computed(() => useStore.user);
+
+// const userFetch = await userStore.fetchUser();
+
+onMounted(() => {
+  useStore.fetchUser();
 });
 </script>
 <template>
@@ -42,12 +55,23 @@ defineProps({
             </li>
           </ul>
         </div>
-        <RouterLink
-          to="/pricing"
-          class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
-        >
-          Download Now
-        </RouterLink>
+        <template v-if="user.subscription.length > 0">
+          <a
+            target="_blank"
+            :href="features.file"
+            class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
+          >
+            Download Now
+          </a>
+        </template>
+        <template v-else>
+          <RouterLink
+            to="/pricing"
+            class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
+          >
+            Subscribe for Download
+          </RouterLink>
+        </template>
       </div>
     </div>
   </aside>

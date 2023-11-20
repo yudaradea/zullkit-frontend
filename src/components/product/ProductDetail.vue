@@ -52,7 +52,9 @@ const features = computed(() => {
         </section>
       </main>
       <!-- Download Button -->
-      <DownloadButton :features="productDetail" :featuresList="features" />
+      <Suspense>
+        <DownloadButton :features="productDetail" :featuresList="features" />
+      </Suspense>
       <!-- End Download button -->
     </div>
   </div>
